@@ -9,7 +9,7 @@ using TutorialesEF.DAL;
 namespace TutorialesEF.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20200604212916_CreateSchoolDB")]
+    [Migration("20200604223955_CreateSchoolDB")]
     partial class CreateSchoolDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,7 +30,12 @@ namespace TutorialesEF.Migrations
                     b.Property<string>("CourseName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("studentId")
+                        .HasColumnType("int");
+
                     b.HasKey("CourseId");
+
+                    b.HasIndex("studentId");
 
                     b.ToTable("Courses");
                 });
@@ -51,6 +56,15 @@ namespace TutorialesEF.Migrations
                     b.HasKey("StudentId");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("TutorialesEF.Entidades.Course", b =>
+                {
+                    b.HasOne("TutorialesEF.Entidades.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("studentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

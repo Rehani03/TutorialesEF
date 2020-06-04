@@ -9,7 +9,7 @@ using TutorialesEF.DAL;
 namespace TutorialesEF.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20200604202445_CreateSchoolDB")]
+    [Migration("20200604212916_CreateSchoolDB")]
     partial class CreateSchoolDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,10 @@ namespace TutorialesEF.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StudentId");

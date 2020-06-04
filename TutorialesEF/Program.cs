@@ -13,8 +13,8 @@ namespace TutorialesEF
         {
             //GuardarStudentDB(); //Ejemplo de guardar en DB
             //GuardarCourseDB(); //Ejemplo de guardar course en DB
-            SimpleQueryDB(); //Ejemplo de hacer un query en DB
-            //DoubleQueryDB(); //Ejemplo de querry con Inclue
+            //SimpleQueryDB(); //Ejemplo de hacer un query en DB
+            DoubleQueryDB(); //Ejemplo de querry con Inclue
 
         }
 
@@ -78,12 +78,12 @@ namespace TutorialesEF
             //Ejemplo del Querying con Inclue
             const string NAME = "Bill";
             SchoolContext context = new SchoolContext();
-            var resultado = context.Students.Where(s => s.FirstName == NAME).Include(s =>s.LastName == "Madison")
-                .FirstOrDefault();
+            var resultado = context.Courses.Where(c => c.CourseName == "Math")
+                .Include(c =>c.Student.FirstName == NAME).FirstOrDefault();
             context.Dispose();
 
             if (resultado != null)
-                Console.WriteLine(resultado.LastName.ToString());
+                Console.WriteLine(resultado.CourseName.ToString());
             else
                 Console.WriteLine("We cant find the student!!");
         }

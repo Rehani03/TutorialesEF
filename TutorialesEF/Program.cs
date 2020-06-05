@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TutorialesEF.DAL;
 using TutorialesEF.Entidades;
@@ -14,7 +15,8 @@ namespace TutorialesEF
             //GuardarStudentDB(); //Ejemplo de guardar en DB
             //GuardarCourseDB(); //Ejemplo de guardar course en DB
             //SimpleQueryDB(); //Ejemplo de hacer un query en DB
-            DoubleQueryDB(); //Ejemplo de querry con Inclue
+            //DoubleQueryDB(); //Ejemplo de query con Include
+            QuerryUsingSql(); //Ejemplo de query usando expresion SqlRaw
 
         }
 
@@ -88,5 +90,29 @@ namespace TutorialesEF
                 Console.WriteLine("We cant find the student!!");
         }
 
+        private static void QuerryUsingSql()
+        {
+            SchoolContext context = new SchoolContext();
+            List<Student> studentList = new List<Student>();
+            try
+            {
+
+                studentList = context.Students.FromSqlRaw("Select *from dbo.Students").ToList();
+                if (studentList != null)
+                    Console.WriteLine(studentList.Find(s => s.FirstName == "Bill").FirstName);
+                else
+                    Console.WriteLine("We cant find the student!!");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                context.Dispose();
+            }
+            
+        }
     }
 }

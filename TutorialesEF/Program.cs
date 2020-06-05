@@ -17,7 +17,9 @@ namespace TutorialesEF
             //SimpleQueryDB(); //Ejemplo de hacer un query en DB
             //DoubleQueryDB(); //Ejemplo de query con Include
             //QuerryUsingSql(); //Ejemplo de query usando expresion SqlRaw
-            UpdatingData();
+            //UpdatingData(); //Ejemplo de modificando data
+            //DeletingData(); //Ejemplo de borrando data
+
         }
 
         private static void GuardarStudentDB()
@@ -175,7 +177,35 @@ namespace TutorialesEF
                 if (modified)
                     Console.WriteLine("Student modified..");
                 else
-                    Console.WriteLine("We cant modified the student..");
+                    Console.WriteLine("We cant modify the student..");
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
+
+        private static void DeletingData()
+        {
+            //En este ejemplo modificamos el nombre del primer estudiante
+            SchoolContext context = new SchoolContext();
+
+            try
+            {
+                var std = context.Students.First<Student>();
+                context.Students.Remove(std);
+                bool deleted = context.SaveChanges() > 0;
+
+                if (deleted)
+                    Console.WriteLine("Student deleted..");
+                else
+                    Console.WriteLine("We cant delete the student..");
 
             }
             catch (Exception)

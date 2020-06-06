@@ -38,6 +38,25 @@ namespace TutorialesEF.Migrations
                     b.ToTable("Courses");
                 });
 
+            modelBuilder.Entity("TutorialesEF.Entidades.Person", b =>
+                {
+                    b.Property<int>("pesonId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("Id")
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("pesonId");
+
+                    b.ToTable("Persons");
+                });
+
             modelBuilder.Entity("TutorialesEF.Entidades.Student", b =>
                 {
                     b.Property<int>("StudentId")

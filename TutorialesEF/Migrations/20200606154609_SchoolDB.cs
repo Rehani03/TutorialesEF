@@ -2,10 +2,23 @@
 
 namespace TutorialesEF.Migrations
 {
-    public partial class CreateSchoolDB : Migration
+    public partial class SchoolDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Persons",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false, defaultValue: 0),
+                    name = table.Column<string>(nullable: true),
+                    lastName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Persons", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Students",
                 columns: table => new
@@ -50,6 +63,9 @@ namespace TutorialesEF.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Courses");
+
+            migrationBuilder.DropTable(
+                name: "Persons");
 
             migrationBuilder.DropTable(
                 name: "Students");

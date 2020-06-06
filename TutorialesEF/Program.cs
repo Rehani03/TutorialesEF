@@ -88,6 +88,8 @@ namespace TutorialesEF
             
             
         }
+
+
         private static void SimpleQueryDB()
         {
             //Ejemplo del Querying
@@ -218,5 +220,7 @@ namespace TutorialesEF
                 context.Dispose();
             }
         }
+
+        
     }
 }

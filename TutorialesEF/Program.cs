@@ -19,7 +19,8 @@ namespace TutorialesEF
             //QuerryUsingSql(); //Ejemplo de query usando expresion SqlRaw
             //UpdatingData(); //Ejemplo de modificando data
             //DeletingData(); //Ejemplo de borrando data
-
+            //UpdatingOnDisconnectedScenario();
+           // DeletingOnDisconnectedScenario();
         }
 
         private static void GuardarStudentDB()
@@ -31,7 +32,7 @@ namespace TutorialesEF
                 var auxStudent = new Student()
                 {
                     StudentId = 0,
-                    FirstName = "Bill",
+                    FirstName = "Michael",
                     LastName = "Madison"
 
                 };
@@ -221,6 +222,82 @@ namespace TutorialesEF
             }
         }
 
-        
+        private static void UpdatingOnDisconnectedScenario()
+        {
+            SchoolContext context = new SchoolContext();
+            try
+            {
+                var modifiedStudent1 = new Student()
+                {
+                    StudentId = 1,
+                    FirstName = "Bill",
+                    LastName = "Madison"
+                };
+
+                var modifiedStudent2 = new Student()
+                {
+                    StudentId = 2,
+                    FirstName = "Steve",
+                    LastName = "Perez"
+                };
+
+                List<Student> modifiedStudents = new List<Student>()
+                {
+                    modifiedStudent1,
+                    modifiedStudent2,
+                };
+
+                context.UpdateRange(modifiedStudents);
+                bool modified = context.SaveChanges() > 0;
+                if (modified)
+                    Console.WriteLine("Modified");
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                context.Dispose();
+            }
+
+        }
+
+        private static void DeletingOnDisconnectedScenario()
+        {
+            SchoolContext context = new SchoolContext();
+
+            try
+            {
+                List<Student> StudentList = new List<Student>()
+                {
+                   new Student()
+                   {
+                       StudentId = 1
+                   },
+                   new Student()
+                   {
+                       StudentId = 2
+                   }
+                };
+
+                context.RemoveRange(StudentList);
+                bool removed = context.SaveChanges() > 0;
+
+                if (removed)
+                    Console.WriteLine("List Removed..");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                context.Dispose();
+            }
+        }
     }
 }

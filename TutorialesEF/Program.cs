@@ -11,7 +11,7 @@ namespace TutorialesEF
        
         static void Main(string[] args)
         {
-            /*Hay ejemplos usando el ModelCreating en el contexto*/
+            /*Hay ejemplos usando el ModelCreating en el contexto y relaciones en las entidades*/
 
             //EjemplosEF.GuardarStudentDB();//Ejemplo de guardar en DB
             //EjemplosEF.SimpleQueryDB(); //Ejemplo de hacer un query en DB

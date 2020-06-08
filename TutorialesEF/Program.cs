@@ -19,8 +19,8 @@ namespace TutorialesEF
             //EjemplosEF.QuerryUsingSql(); //Ejemplo de query usando expresion SqlRaw
             //EjemplosEF.UpdatingData(); //Ejemplo de modificando data
             //EjemplosEF.DeletingData(); //Ejemplo de borrando data
-            //EjemplosEF.UpdatingOnDisconnectedScenario();
-           //EjemplosEF.DeletingOnDisconnectedScenario();
+            //EjemplosEF.UpdatingOnDisconnectedScenario(); //Ejemplo de actualizando con Range y desconectado
+           //EjemplosEF.DeletingOnDisconnectedScenario(); //Ejemplo de borrando con range y desconectado
         }
         
     }

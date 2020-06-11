@@ -84,7 +84,7 @@ namespace TutorialesEF.Ejemplos
         public static void SimpleQueryDB()
         {
             //Ejemplo del Querying
-            const string NAME = "Bill";
+            const string NAME = "Michael";
             SchoolContext context = new SchoolContext();
             try
             {
@@ -107,7 +107,7 @@ namespace TutorialesEF.Ejemplos
         public static void DoubleQueryDB()
         {
             //Ejemplo del Querying con Inclue
-            const string NAME = "Bill";
+            const string NAME = "Michael";
             SchoolContext context = new SchoolContext();
             try
             {

@@ -46,6 +46,12 @@ namespace TutorialesEF.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
+                    b.Property<int>("Edad")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Ocupacion")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("lastName")
                         .HasColumnType("nvarchar(max)");
 

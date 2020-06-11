@@ -22,7 +22,10 @@ namespace TutorialesEF
             //EjemplosEF.UpdatingOnDisconnectedScenario(); //Ejemplo de actualizando con Range y desconectado
             //EjemplosEF.DeletingOnDisconnectedScenario(); //Ejemplo de borrando con range y desconectado
             //EjemplosEF.ChangeTracker(); //ejemplo para rastrear los metodos que invoquen el Contexto
-            //EjemplosEF.DetachedContext(); //Este ejemplo sirve para separar un registro de la tabla de manera desconectada
+            //EjemplosEF.DetachedContext(); //Este ejemplo sirve para separar un registro de la tabla de manera conectada
+            //EjemplosEF.EntityGraphDisconnected(); //Ejemplo de graph desconectado del escenario
+            //EjemplosEF.QuerryParametrizado();  //Ejemplo de querying parametrizado
+
         }
         
     }

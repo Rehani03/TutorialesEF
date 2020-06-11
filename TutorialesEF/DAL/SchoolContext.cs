@@ -21,8 +21,8 @@ namespace TutorialesEF.DAL
             modelBuilder.Entity<Person>().Property(p => p.pesonId).HasColumnName("Id").HasDefaultValue(0).IsRequired();
 
             //shadow property
-            modelBuilder.Entity<Student>().Property<String>("Ocupacion");
-            modelBuilder.Entity<Student>().Property<int>("Edad");
+            modelBuilder.Entity<Person>().Property<String>("Ocupacion");
+            modelBuilder.Entity<Person>().Property<int>("Edad");
         }
 
         public DbSet<Student> Students { get; set; }

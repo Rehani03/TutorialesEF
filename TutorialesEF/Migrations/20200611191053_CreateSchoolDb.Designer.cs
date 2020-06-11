@@ -9,8 +9,8 @@ using TutorialesEF.DAL;
 namespace TutorialesEF.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20200606154609_SchoolDB")]
-    partial class SchoolDB
+    [Migration("20200611191053_CreateSchoolDb")]
+    partial class CreateSchoolDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,12 @@ namespace TutorialesEF.Migrations
                         .HasColumnName("Id")
                         .HasColumnType("int")
                         .HasDefaultValue(0);
+
+                    b.Property<int>("Edad")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Ocupacion")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("lastName")
                         .HasColumnType("nvarchar(max)");

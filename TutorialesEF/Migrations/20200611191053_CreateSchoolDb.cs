@@ -2,7 +2,7 @@
 
 namespace TutorialesEF.Migrations
 {
-    public partial class SchoolDB : Migration
+    public partial class CreateSchoolDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,9 @@ namespace TutorialesEF.Migrations
                 {
                     Id = table.Column<int>(nullable: false, defaultValue: 0),
                     name = table.Column<string>(nullable: true),
-                    lastName = table.Column<string>(nullable: true)
+                    lastName = table.Column<string>(nullable: true),
+                    Edad = table.Column<int>(nullable: false),
+                    Ocupacion = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

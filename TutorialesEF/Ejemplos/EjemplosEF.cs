@@ -324,7 +324,7 @@ namespace TutorialesEF.Ejemplos
 
         public static void DetachedContext()
         {
-            //Este ejemplo sirve para separar un registro de la tabla de manera desconectada
+            //Este ejemplo sirve para separar un registro de la tabla de manera conectada
             SchoolContext contexto = new SchoolContext();
             try
             {
@@ -340,6 +340,68 @@ namespace TutorialesEF.Ejemplos
             {
                 contexto.Dispose();
             }
+        }
+
+        public static void EntityGraphDisconnected()
+        {
+            //Ejemplo de hacer un graph en un escenario desconectado y actualizando data
+            SchoolContext contexto = new SchoolContext();
+            try
+            {
+                var course = new Course()
+                {
+                    CourseId = 1,
+                    CourseName = "Math",
+                    Student = new Student()
+                    {
+                        StudentId = 1,
+                        FirstName = "Bill",
+                        LastName = "Ben"
+                    }
+                };
+
+                contexto.Update(course);
+                MostrarEstado(contexto.ChangeTracker.Entries());
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            } 
+        }
+
+        public static void QuerryParametrizado()
+        {
+            //Ejemplo de querying parametrizado
+            SchoolContext context = new SchoolContext();
+            List<Student> studentList = new List<Student>();
+            string name = "Michael";
+            try
+            {
+
+                studentList = context.Students.FromSqlRaw($"Select * from dbo.Students where FirstName = '{name}'").ToList();
+
+
+                if (studentList != null)
+                    Console.WriteLine(studentList.Find(s => s.FirstName == name).FirstName);
+                else
+                    Console.WriteLine("We cant find the student!!");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                context.Dispose();
+            }
+
         }
     }
 }

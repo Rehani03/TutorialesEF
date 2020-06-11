@@ -1,10 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TutorialesEF.DAL;
 using TutorialesEF.Entidades;
+
+
 
 namespace TutorialesEF.Ejemplos
 {
@@ -284,6 +287,58 @@ namespace TutorialesEF.Ejemplos
             finally
             {
                 context.Dispose();
+            }
+        }
+
+        public static void ChangeTracker()
+        {
+            //ejemplo de hacer el tracking a los metodos que invoquen el Contexto
+            //De igual manera se puede hacer para borrar, añadir entre otros
+            SchoolContext contexto = new SchoolContext();
+            try
+            {
+                var student = contexto.Students.First();
+                student.LastName = "LastName Changed";
+                MostrarEstado(contexto.ChangeTracker.Entries());
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+           
+        }
+
+        private static void MostrarEstado(IEnumerable<EntityEntry> entries)
+        {
+            foreach (var entry in entries)
+            {
+                Console.WriteLine($"Entity: {entry.Entity.GetType().Name}, State: { entry.State.ToString()}");
+            }
+        }
+
+        public static void DetachedContext()
+        {
+            //Este ejemplo sirve para separar un registro de la tabla de manera desconectada
+            SchoolContext contexto = new SchoolContext();
+            try
+            {
+                var disconnectedEntity = new Student() { StudentId = 1, FirstName = "Bill" };
+                Console.Write(contexto.Entry(disconnectedEntity).State);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
             }
         }
     }

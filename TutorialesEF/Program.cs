@@ -20,7 +20,9 @@ namespace TutorialesEF
             //EjemplosEF.UpdatingData(); //Ejemplo de modificando data
             //EjemplosEF.DeletingData(); //Ejemplo de borrando data
             //EjemplosEF.UpdatingOnDisconnectedScenario(); //Ejemplo de actualizando con Range y desconectado
-           //EjemplosEF.DeletingOnDisconnectedScenario(); //Ejemplo de borrando con range y desconectado
+            //EjemplosEF.DeletingOnDisconnectedScenario(); //Ejemplo de borrando con range y desconectado
+            //EjemplosEF.ChangeTracker(); //ejemplo para rastrear los metodos que invoquen el Contexto
+            //EjemplosEF.DetachedContext(); //Este ejemplo sirve para separar un registro de la tabla de manera desconectada
         }
         
     }
